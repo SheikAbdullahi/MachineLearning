@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{hyperref} % Needed to create hyperlinks
+\usepackage{graphicx} % Needed to insert images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{enumitem}
+
+\begin{document}
+
+\title{Resolution of Code Issues in Machine Learning Project}
+\author{}
+\date{}
+\maketitle
+
+\section*{Part a}
+
+In regression analysis, scaling is of paramount importance as it mitigates the influence of the magnitude of different features on the model. This process is crucial for models sensitive to the scale of the input features. In this implementation, the \textit{Standard Scaler} is utilized, which scales the features by subtracting the mean and scaling to unit variance, ensuring all features contribute equally to the model's performance.
+
+Furthermore, the approach to data splitting is pivotal in model training and evaluation. In this instance, $80\%$ of the data is allocated as training data, and the remaining $20\%$ is used as test data. This ratio is a widely adopted convention in machine learning, enabling the model to learn effectively from the majority of the data and subsequently be evaluated on unseen data to assess its generalization performance. Such a split aims to ensure a balance between maximizing the model's learning and retaining sufficient unseen data for a reliable performance evaluation.
+
+The code is made available on GitHub and can be accessed through the following link: \href{https://github.com/SheikAbdullahi/MachineLearning}{GitHub Repository}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.55\textwidth]{fig/Project1Problem1Fig1ML.png}
+    \caption{Visual representation}
+    \label{fig:python-code}
+\end{figure}
+
+
+\section*{Part b}
+
+
+We will compare the results with the ones obtained using Ordinary Least Squares from part a) and will analyze the dependency on \( \lambda \), the regularization parameter.
+
+\subsection*{Ridge Regression}
+
+The Ridge regression cost function is given by:
+
+\[
+C(\mathbf{X}, \beta) = ||\mathbf{y} - \mathbf{X}\beta||^2_2 + \lambda||\beta||^2_2
+\]
+
+To find the optimal \( \beta \) (beta), we differentiate w.r.t. \( \beta \) and set to zero.
+
+The equation for \( \beta \) in Ridge Regression becomes:
+
+\[
+\beta = (\mathbf{X}^T \mathbf{X} + \lambda \mathbf{I})^{-1} \mathbf{X}^T \mathbf{y}
+\]
+
+Where:
+
+\begin{itemize}
+    \item \( \lambda \) is the regularization parameter
+    \item \( \mathbf{X} \) is the design matrix
+    \item \( \mathbf{y} \) is the target variable
+    \item \( \mathbf{I} \) is the identity matrix
+\end{itemize}
+
+ \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.55\textwidth]{fig/Project1Problem2Fig1ML.png}
+    \caption{Visual representation}
+    \label{fig:python-code}
+\end{figure}
+
+When performing a Ridge Regression analysis on the Franke Function, several key insights and considerations emerge. Below is a discussion and analysis segment that can be utilized for understanding the results and their implications better.
+
+\section*{Discussion and Analysis Part b:}
+
+\subsection*{1. Impact of Lambda ($\lambda$) on Model:}
+Lambda, in Ridge Regression, acts as a regularization parameter controlling the magnitude of the coefficients. From the analysis, it's evident that as $\lambda$ increases, the model complexity decreases, helping prevent overfitting, but a too high value might lead to underfitting, where the model is too simplistic to capture underlying patterns in the data. A careful selection of $\lambda$ is crucial, striking a balance between bias and variance.
+
+\subsection*{2. Model Evaluation Metrics:}
+\begin{itemize}[label={--}]
+    \item \textbf{Mean Squared Error (MSE):} From the plots, we notice the trend in MSE scores as a function of $\lambda$. Ideally, a model with the lowest MSE is preferable, indicating less error between the predicted and actual outcomes. The variation in MSE with different $\lambda$ values helps in identifying the optimal $\lambda$, where the error is minimized.
+    \item \textbf{R² Score:} Observing the R² scores provides insights into the model's explanatory power. A higher R² score implies that the model can better explain the variability in the dependent variable. Analyzing how R² changes with $\lambda$ offers an understanding of the trade-off between model complexity and explanatory power.
+\end{itemize}
+
+\subsection*{3. Model Complexity:}
+While the regularization effect of $\lambda$ in Ridge Regression reduces the risk of overfitting by penalizing high coefficients, it’s crucial to consider the balance between simplicity and accuracy. A model that is too simplistic may not adequately represent the underlying relationship in the data, leading to inaccurate predictions on unseen data.
+
+\subsection*{4. Comparison with OLS:}
+Comparing the results obtained from Ridge Regression with those from Ordinary Least Squares (OLS) reveals how regularization impacts model performance. OLS may struggle with multicollinearity in the presence of highly correlated features, but Ridge Regression can handle this by adding a degree of bias. Evaluating the models’ performance on test data provides insights into their generalization capability, indicating whether Ridge’s inclusion of bias leads to better predictions on unseen data compared to OLS.
+
+\subsection*{5. Data Scaling:}
+Scaling the data is crucial in Ridge Regression as it standardizes the features, ensuring that no particular feature dominates due to its scale. Observing the model’s performance with scaled data underscores the importance of preprocessing in building accurate, robust models.
+
+\subsection*{6. Exploration of Polynomial Degrees:}
+Evaluating different polynomial degrees in the model reveals insights into optimal model complexity for capturing the underlying patterns in the data without overfitting. A higher polynomial degree can lead to a more flexible model, but it might also capture the noise in the data, hindering the model's generalization capability on unseen data.
+
+\subsection*{7. General Insights:}
+The nuanced interplay between bias and variance, as mediated by $\lambda$, underscores the importance of thoughtful model selection and parameter tuning. The optimal trade-off is usually data-dependent, requiring comprehensive exploration to discern the most fitting approach for the given context.
+
+\section*{Conclusion:}
+Through a thorough analysis of the Ridge Regression results on the Franke Function, valuable insights into model optimization and the impact of regularization have been gleaned. This exploration reinforces the importance of meticulous parameter tuning and model selection to construct models that are robust, accurate, and generalize well to unseen data. The insights drawn from examining the impacts of $\lambda$, analyzing model evaluation metrics, and exploring model complexities are instrumental in advancing understanding of Ridge Regression's utility and applications in diverse domains.
+
+
+
+\end{document}
