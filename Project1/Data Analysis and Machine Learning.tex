@@ -1,20 +1,25 @@
 \documentclass{article}
-\usepackage{hyperref} % Needed to create hyperlinks
-\usepackage{graphicx} % Needed to insert images
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
 \usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{geometry}
-\geometry{a4paper, margin=1in}
-\usepackage{enumitem}
+\usepackage{booktabs} % for professional tables
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{listings}
+\pdfcompresslevel=0
+
+\title{FYS-STK3155/4155 – Applied Data Analysis and Machine Learning 
+University of Oslo}
+\author{Abdullahi Hassan Sheik }
+\date{October 2023}
 
 \begin{document}
 
-\title{Resolution of Code Issues in Machine Learning Project}
-\author{}
-\date{}
 \maketitle
+
+\paragraph{}
+The complete implementation for this project is available on my GitHub repository. You can access it \href{https://github.com/SheikAbdullahi/MachineLearning/tree/main/Project1}{here}.
 
 \section*{Part a}
 
@@ -71,6 +76,8 @@ Where:
 
 When performing a Ridge Regression analysis on the Franke Function, several key insights and considerations emerge. Below is a discussion and analysis segment that can be utilized for understanding the results and their implications better.
 
+
+
 \section*{Discussion and Analysis Part b:}
 
 \subsection*{1. Impact of Lambda ($\lambda$) on Model:}
@@ -80,6 +87,8 @@ Lambda, in Ridge Regression, acts as a regularization parameter controlling the 
 \begin{itemize}[label={--}]
     \item \textbf{Mean Squared Error (MSE):} From the plots, we notice the trend in MSE scores as a function of $\lambda$. Ideally, a model with the lowest MSE is preferable, indicating less error between the predicted and actual outcomes. The variation in MSE with different $\lambda$ values helps in identifying the optimal $\lambda$, where the error is minimized.
     \item \textbf{R² Score:} Observing the R² scores provides insights into the model's explanatory power. A higher R² score implies that the model can better explain the variability in the dependent variable. Analyzing how R² changes with $\lambda$ offers an understanding of the trade-off between model complexity and explanatory power.
+
+    
 \end{itemize}
 
 \subsection*{3. Model Complexity:}
@@ -101,5 +110,239 @@ The nuanced interplay between bias and variance, as mediated by $\lambda$, under
 Through a thorough analysis of the Ridge Regression results on the Franke Function, valuable insights into model optimization and the impact of regularization have been gleaned. This exploration reinforces the importance of meticulous parameter tuning and model selection to construct models that are robust, accurate, and generalize well to unseen data. The insights drawn from examining the impacts of $\lambda$, analyzing model evaluation metrics, and exploring model complexities are instrumental in advancing understanding of Ridge Regression's utility and applications in diverse domains.
 
 
+
+\section*{Discussion and Analysis Part c:}
+
+I have solved the Python implementation for Part C. The solution can be found on my GitHub at the following link: \href{https://github.com/SheikAbdullahi/MachineLearning/blob/main/Project1/Project1Partc.py}{GitHub - Project1Partc.py}.
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{fig/Project1Problem3Fig1ML.png}
+    \caption{Visual representation}
+    \label{fig:python-code}
+\end{figure}
+
+\subsection*{1. Method Comparison:}
+\begin{itemize}[label={--}]
+    \item \textbf{OLS} offers simplicity and interpretability but lacks regularization, leading to potential overfitting.
+    \item \textbf{Ridge} introduces L2 regularization, reducing overfitting by penalizing large coefficients but may include all the features.
+    \item \textbf{Lasso}, with its L1 regularization, not only helps in reducing overfitting but can also perform feature selection.
+\end{itemize}
+
+\subsection*{2. Model Fitness:}
+Comparing the MSE and R² scores among OLS, Ridge, and Lasso regression models helps in judging which model fits the data best. The model with lower MSE and higher R² is generally considered better fitting.
+
+\subsection*{3. Impact of Lambda:}
+Analyzing the effect of $\lambda$ on Lasso Regression and comparing it with Ridge provides insights into how different regularization techniques influence the model, specifically regarding feature selection and coefficient shrinkage.
+
+\subsection*{4. Feature Selection:}
+Lasso’s ability to perform feature selection can be critically analyzed, and the relevance of the included and excluded features to model performance can be discussed.
+
+\subsection*{5. Model Complexity and Overfitting:}
+While Lasso helps in reducing model complexity and overfitting, a critical discussion on the trade-off between model simplicity and its ability to capture the underlying patterns is essential.
+
+\subsection*{6. Conclusion:}
+A comprehensive analysis and comparison of the results from OLS, Ridge, and Lasso Regression can offer deeper insights into the suitability of each method for different kinds of data and requirements. The detailed study of Lasso Regression’s results, in correlation with those from OLS and Ridge, is fundamental in advancing our understanding of the versatility and applicability of linear regression models in diverse scenarios.
+
+
+\section*{Part d}
+
+\subsection*{Expectation value of \(y_i\)}
+
+Given that:
+
+\[ y = f(x) + \varepsilon \]
+\[ \tilde{y} = X \beta \]
+\[ \varepsilon \sim N(0, \sigma^2) \]
+
+The expectation value of \(y_i\) is:
+
+\[ \mathbb{E}(y_i) = \mathbb{E}(X_{i, *} \beta + \varepsilon_i) \]
+
+Since the error term, \( \varepsilon \), has an expected value of zero, the equation simplifies to:
+
+\[ \mathbb{E}(y_i) = \mathbb{E}(X_{i, *} \beta) \]
+
+Given \( \beta \) are constants, the expectation is:
+
+\[ \mathbb{E}(y_i) = X_{i, *} \beta \]
+
+I have solved the Python implementation for Part D. The solution can be found on my GitHub at the following link: \href{https://github.com/SheikAbdullahi/MachineLearning/blob/main/Project1/Project1Partd.py}{GitHub - Project1Partd.py}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.55\textwidth]{fig/Project1Problem5Fig1ML.png}
+    \caption{Visual representation}
+    \label{fig:python-code}
+\end{figure}
+
+\subsection*{Showing that the variance is \( \sigma^2 \)}
+
+The variance of \(y_i\):
+
+\[ Var(y_i) = Var(X_{i, *} \beta + \varepsilon_i) \]
+
+Given \(X_{i, *} \beta\) are constants:
+
+\[ Var(y_i) = Var(\varepsilon_i) = \sigma^2 \]
+
+\subsection*{Showing that \( \mathbb{E}(\hat{\beta}) = \beta \)}
+
+Given the OLS solution for \( \hat{\beta} \):
+
+\[ \hat{\beta} = (X^T X)^{-1} X^T y \]
+
+The expected value of \( \hat{\beta} \) is:
+
+\[ \mathbb{E}(\hat{\beta}) = \mathbb{E}((X^T X)^{-1} X^T y) \]
+
+\[ \mathbb{E}(\hat{\beta}) = (X^T X)^{-1} X^T \mathbb{E}(y) \]
+
+And since \( \mathbb{E}(y) = X \beta \):
+
+\[ \mathbb{E}(\hat{\beta}) = (X^T X)^{-1} X^T X \beta = \beta \]
+
+\subsection*{Show that the variance of \( \hat{\beta} \) is \( \sigma^2 (X^T X)^{-1} \)}
+
+Given the variance of the estimator \( \hat{\beta} \) as:
+
+\[ Var(\hat{\beta}) = Var((X^T X)^{-1} X^T y) \]
+
+Since \(X\) is fixed and not random, and \(y\) is normally distributed with mean \(X \beta\) and variance \( \sigma^2 \), we have:
+
+\[ Var(\hat{\beta}) = (X^T X)^{-1} X^T Var(y) X (X^T X)^{-1} \]
+
+Given \( Var(y) = \sigma^2 I \) where \( I \) is the identity matrix:
+
+\[ Var(\hat{\beta}) = \sigma^2 (X^T X)^{-1} X^T X (X^T X)^{-1} \]
+
+Simplifying gives:
+
+\[ Var(\hat{\beta}) = \sigma^2 (X^T X)^{-1} \]
+
+\subsection*{In Conclusion:}
+- The expectation and variance of \(y_i\) are \(X_{i, *} \beta\) and \(\sigma^2\) respectively.
+- The expected value of \( \hat{\beta} \) is \( \beta \).
+- The variance of \( \hat{\beta} \) is \( \sigma^2 (X^T X)^{-1} \).
+\subsection*{Confidence Interval:}
+
+Given that the variance of \( \hat{\beta} \) is \( \sigma^2 (X^T X)^{-1} \), the diagonal elements of the matrix \( \sigma^2 (X^T X)^{-1} \) represent the variances of the individual \( \beta \) coefficients, and subsequently, the standard deviation (square root of variance) of these elements can be used to define the confidence intervals for each coefficient \( \beta_j \). Specifically, if the estimator is normally distributed, a \( (1 - \alpha) \times 100 \% \) confidence interval for \( \beta_j \) is given by:
+
+\[ \hat{\beta}_j \pm z_{\frac{\alpha}{2}} \cdot \sqrt{\left(\sigma^2 (X^T X)^{-1}\right)_{jj}} \]
+
+where \( z_{\frac{\alpha}{2}} \) is the z-score corresponding to the desired level of confidence. For a 95\% confidence interval, \( z_{\frac{\alpha}{2}} \) is approximately 1.96.
+
+
+\section*{Part e}
+
+
+To address the theoretical part of the question, I want to refer to the bias-variance decomposition equation which can be expressed as follows:
+
+\[
+\mathbb{E}[(\bm{y} - \bm{\tilde{y}})^2] = \mathrm{Bias}[\tilde{y}]^2 + \mathrm{Var}[\tilde{y}] + \sigma^2
+\]
+
+
+Here, $\mathbb{E}$ denotes the expected value, reflecting the average or mean value in this context.
+
+\begin{itemize}
+    \item $\mathrm{Bias} [\tilde{y}]$ represents the error due to the simplifying assumptions incorporated into the model to make the target function easier to approximate. High bias can lead to underfitting.
+    \item $\mathrm{Var}$ represents the error due to the complexity of the model. High variance can lead to overfitting.
+    \item $\sigma^2$ represents the irreducible error, the noise term.
+\end{itemize}
+
+\begin{figure}[htbp]*
+    \centering
+    \includegraphics[width=0.55\textwidth]{fig/Project1Problem6Fig1ML.png}
+    \caption{Visual representation}
+    \label{fig:python-code}
+\end{figure}
+
+
+The trade-off comes when selecting model complexity: A more complex model will have lower bias but higher variance, and vice versa.
+
+I have solved the Python implementation for Part E. The solution can be found on my GitHub at the following link: \href{https://github.com/SheikAbdullahi/MachineLearning/blob/main/Project1/Project1Parte.py}{GitHub - Project1Parte.py}
+This code will assume that we have already split our dataset into training and test sets, and generated the design matrix for our dataset.
+
+
+
+To perform the bias-variance trade-off analysis for the Franke function using the OLS method. This code provides a clear visual representation of how the bias, variance, and error change as the model complexity (polynomial degree) increases. When analyzing the results, we are looking for the sweet spot where the sum of bias and variance is at its lowest, as this typically indicates the most appropriate level of model complexity.
+
+
+\section*{Part f}
+
+
+\section*{Analysis \& Interpretation:}
+
+\begin{enumerate}[label=\arabic*.]
+   \item \textbf{OLS Regression:}
+      \begin{itemize}
+         \item Suppose OLS shows increasing MSE with the increase in polynomial degrees. This would typically indicate overfitting, suggesting that the model is too complex and is fitting the training data's noise.
+      \end{itemize}
+
+   \item \textbf{Ridge and Lasso Regression:}
+      \begin{itemize}
+         \item If Ridge and Lasso maintain relatively lower and stable MSE as the polynomial degree increases, this implies that the regularization is effective in controlling the model complexity and preventing overfitting.
+      \end{itemize}
+
+   \item \textbf{Comparison of Regression Models:}
+      \begin{itemize}
+         \item If the Lasso and Ridge models exhibit consistently lower MSE across various polynomial degrees compared to OLS, it emphasizes the utility of regularization, especially when dealing with higher dimensional data.
+      \end{itemize}
+\end{enumerate}
+
+
+\begin{itemize}
+   \item \textbf{Scenario 1: Low Degree Polynomial}
+      \begin{itemize}
+         \item At low polynomial degrees, if all models show high MSE, it might be an indicator of underfitting, meaning the models are too simplistic to capture the underlying patterns in the data.
+      \end{itemize}
+
+   \item \textbf{Scenario 2: Optimal Degree Polynomial}
+      \begin{itemize}
+         \item There might be a specific degree where the MSE is minimized across models. This degree represents the optimal trade-off between bias and variance, providing enough complexity to capture patterns but not so much that it fits the noise in the data.
+      \end{itemize}
+
+   \item \textbf{Scenario 3: High Degree Polynomial}
+      \begin{itemize}
+         \item At very high polynomial degrees, if OLS shows significantly higher MSE compared to Ridge and Lasso, it suggests that OLS is overfitting due to excessive complexity, and regularization in Ridge and Lasso is mitigating this issue.
+      \end{itemize}
+\end{itemize}
+
+\section*{Final Comparative Analysis:}
+
+\begin{itemize}
+   \item \textbf{Optimal Model Selection:}
+      \begin{itemize}
+         \item Given the  scenarios, the model with the lowest and most stable MSE across varying degrees of complexity would be deemed the most suitable. If, for example, Lasso regression has the lowest MSE and fewer features, it would be the model of choice, balancing predictive accuracy and model simplicity.
+      \end{itemize}
+
+   \item \textbf{Complexity Analysis:}
+      \begin{itemize}
+         \item Examining the degree at which the MSE is minimized would give insight into the optimal level of complexity for the model, guiding the selection of the polynomial degree for the design matrix.
+      \end{itemize}
+
+   \item \textbf{Insight into Regularization:}
+      \begin{itemize}
+         \item Observing how Ridge and Lasso compare to OLS gives valuable insights into the effectiveness of L1 and L2 regularization in this specific context. If they outperform OLS at higher complexities, it underscores the importance of regularization when dealing with high-dimensional datasets.
+      \end{itemize}
+      
+\end{itemize}
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.35\textwidth}
+        \section*{Conclusion:}
+        Based on this output, one would typically favor the model with stable, low MSE across varying complexities, while also considering the simplicity and interpretability of the model. The degree which minimizes the MSE would be considered the optimal complexity for the model. Regularization techniques would be particularly valued if they prevent overfitting at higher complexities, demonstrating their crucial role in building robust predictive models.
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.6\textwidth}
+        \includegraphics[width=\textwidth]{fig/Project1Problem7Fig1ML.png}
+        \caption{Visual representation}
+        \label{fig:python-code}
+    \end{minipage}
+\end{figure}
 
 \end{document}
