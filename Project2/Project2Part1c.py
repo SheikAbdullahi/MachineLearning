@@ -20,7 +20,7 @@ def compute_cost(theta, X_b, y):
 def mini_batch_SGD(X, y, learning_rate=0.01, batch_size=20, num_epochs=50):
     m = len(X)
     X_b = np.c_[np.ones((m, 1)), X]  # Add x0 = 1 to each instance
-    theta = np.random.randn(2, 1)  # Random initialization
+    theta = np.random.randn(2, 1)  # Initialization
 
     cost_history = []  # For plotting
 
